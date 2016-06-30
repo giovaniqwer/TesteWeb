@@ -1,0 +1,25 @@
+$(document).ready(function(e){
+	$("#menutopo a").click(function(e){	
+		e.preventDefault();
+		var href = $(this).attr('href');
+		$(".conteudo").load(href + " .conteudo");
+ 	});
+});
+
+function chamaajax(botao) {
+	//AJAX PARA AS PÁGINAS CLIENTE E FORNECEDORES
+	var href = $(botao).attr('href');
+	$(".conteudo").load(href + " .conteudo");
+	//O DATE PICKER SE PERDE AO USAR AJAX - POR ISSO ESTA FUNÇÃO: PARA COLOCAR O DATE PICKER QUANDO O AJAX É USADO
+	var a = document.getElementsByClassName("calendario");
+	$a = a;
+	if (!$(a).hasClass("hasDatepicker"))
+   {
+            $(a).datepicker({
+					showOn: "button",
+					buttonImage: "assets/img/calendario.png",
+					buttonImageOnly: true            
+            });
+            $(a).datepicker("show");
+   }
+}
